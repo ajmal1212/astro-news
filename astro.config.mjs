@@ -9,6 +9,7 @@ import keystatic from "@keystatic/astro";
 import react from "@astrojs/react";
 import { loadEnv } from "vite";
 import pagefind from "astro-pagefind";
+import cloudflare from '@astrojs/cloudflare';
 
 const { RUN_KEYSTATIC } = loadEnv(import.meta.env.MODE, process.cwd(), "");
 
@@ -21,6 +22,12 @@ if (RUN_KEYSTATIC === "true") {
 
 // https://astro.build/config
 export default defineConfig({
+  build: {
+    exclude: [
+      // Skip existing optimized images
+      /\.(jpe?g|png|gif|webp)$/i
+    ]
+  },
   site: SITE.url,
   base: SITE.basePath,
   markdown: {
@@ -34,4 +41,9 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
+  adapter: cloudflare({
+    platformProxy: {
+      enabled: true,
+    },
+  }),
 });

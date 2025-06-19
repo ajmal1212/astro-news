@@ -32,7 +32,7 @@ const { article, isLast } = Astro.props;
         alt={article.data.covert_alt
           ? article.data.covert_alt
           : article.data.title}
-        layout="responsive"
+        layout="constrained"
         loading={"eager"}
         class="aspect-video rounded w-full h-full"
       />

@@ -4,7 +4,7 @@ export const SITE = {
   title: "Astro News",
   description: "A news website built with Astro",
   author: "Mohammad Rahmani",
-  url: "https://astro-news-six.vercel.app",
+  url: "https:web.codenetic.tech",
   github: "https://github.com/Mrahmani71/astro-news",
   locale: "en-US",
   dir: "ltr",
